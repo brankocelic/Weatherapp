@@ -1,5 +1,6 @@
 package com.example.bane_.weather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         new GetListOfCountryNames().execute(("http://api.openweathermap.org/data/2.5/weather?q=" + cityField.getText().toString() + "&units=metric&appid=6a5fa1454fff68ccdfd50f1d6baa8c07"));
+    }
+    public void newIntent(View view){
+        final Intent intent = new Intent(this, Second_activity.class);
+        startActivity(intent);
     }
 
     private class GetListOfCountryNames extends AsyncTask<String, Void, String> {
